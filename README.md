@@ -1,8 +1,8 @@
 # LI4
 
-Laboratorios de Informatica IV - MIEINF
+Laboratórios de Informática IV  - MIEINF
 
-Trabalho Prático da Unidade Curricular Laboratorios de Informatica IV
+Trabalho Prático da Unidade Curricular Laboratórios de Informática IV
 
 Mestrado Integrado em Engenharia Informática
 

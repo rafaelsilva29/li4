@@ -1,0 +1,48 @@
+﻿@page
+@model RecipeAddStepModel
+
+@{
+    ViewData["Title"] = "RecipeAddStep";
+}
+
+<h4>Adicionar um Passo</h4>
+<hr />
+
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="well">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Step.Link" class="control-label"></label>
+                    <input asp-for="Step.Link" class="form-control" />
+                    <span asp-validation-for="Step.Link" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Step.Text" class="control-label"></label>
+                    <input asp-for="Step.Text" class="form-control" />
+                    <span asp-validation-for="Step.Text" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Step.Time" class="control-label"></label>
+                    <input asp-for="Step.Time" class="form-control" />
+                    <span asp-validation-for="Step.Time" class="text-danger"></span>
+                </div>
+
+                @Html.ValidationSummary(false)
+
+                <div class="form-group">
+                    <input type="submit" value="Adicionar Passo" class="btn btn-default" />
+                </div>
+            </form>
+
+            <form method="get" action="/">
+                <button type="submit" class="btn btn-default pull-left">Concluido</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

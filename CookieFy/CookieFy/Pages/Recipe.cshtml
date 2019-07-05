@@ -1,0 +1,100 @@
+﻿@page "{handler?}/{recipeID?}"
+@model CookieFy.Pages.RecipeModel
+@{
+    ViewData["Title"] = "Receita";
+}
+
+@section head
+    {
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+}
+
+@section Scripts
+    {
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script>document.getElementById("banner").style = "display:none;";</script>
+}
+<div class="container mycont">
+    <div class="row">
+        <div class="col-md-6 col-centered">
+            <div class="panel panel-default col-centered">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-8">
+
+                            <h4><strong>@Model.TRecipe.Title</strong></h4>
+                            <div style="display:flex">
+                                @for (int i = 0; i < Model.TRecipe.Rank; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star"></span>
+                                }
+
+                                @for (int i = 0; i < 5 - Model.TRecipe.Rank; i++)
+                                {
+                                     <span class="glyphicon glyphicon-star-empty"></span>
+                                }
+                            </div>
+
+                            <p>Classificações: @Model.TRecipe.Classifications</p>
+                            <hr />
+
+                            <h4><strong>Descrição</strong></h4>
+                            <p>@Model.TRecipe.Title</p>
+
+                            <h4><strong>Preço</strong></h4>
+                            <p>@Model.TRecipe.Price $</p>
+
+                            <h4><strong>Ingredientes</strong></h4>
+                                <ul>
+                                     @foreach(var item in Model.RIngredients){
+                                         <li>
+                                             @item.Name
+                                         </li>
+                                    }
+                                </ul>
+
+
+                            <h4><strong>Utensílios</strong></h4>
+                            <ul>
+                                 @foreach(var item in Model.RUtensils){
+                                     <li>
+                                         @item.Name
+                                     </li>
+                                }
+                                </ul>
+                            
+                        
+
+                        </div>
+                        <div id="recipeID" class="col-xs-12 col-sm-4 text-center">
+                            <br />
+                            <img src="data:image/jpeg;base64, @System.Convert.ToBase64String(Model.TRecipe.ImgRecipe)" alt="" class="center-block img-square img-responsive profile-img">
+                            <br />
+                        </div><!--/col!-->
+                    </div>
+
+                </div><!--/row-->
+                <div class="col-xs-12 col-sm-4">
+                    <a class="btn btn-info btn-block" asp-page="/Assistent" asp-page-handler="Recipe" asp-route-recipeID="@Model.TRecipe.RecipeID">Iniciar Assistente</a>
+                </div><!--/col-->
+            </div><!--/panel-body-->
+        </div><!--/panel-->
+    </div>
+    <div class="comments">
+        <h2><strong>Comments</strong></h2>
+    </div>
+</div>
+
+<style>
+    .mycont {
+        padding-top: 10%;
+        padding-bottom: 10%;
+    }
+
+    .comments {
+        padding-top: 30px;
+    }
+</style>

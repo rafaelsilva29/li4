@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CookieFy</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/jumbotron.css" />
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="container body-content" id="color">
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a asp-page="/Index"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    @if (User.IsInRole("Admin")) {
+                        <li><a asp-page="/AdminArea"><span class="glyphicon glyphicon-user"></span> Área de Admin</a></li>
+                    }
+
+                    @if (User.IsInRole("User")) {
+                        <li><a asp-page="/UserArea" asp-page-handler="UserLoggedIn"><span class="glyphicon glyphicon-user"></span> Área de Utilizador</a></li>
+                    }
+
+                    @if (@User.Identity.Name == null) {
+                        <li><a asp-page="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a asp-page="/Register"><span class="glyphicon glyphicon-pencil"></span> Registo</a></li>
+                    }
+
+                    else {
+
+                        <li><a asp-page="/Login" asp-page-handler="Logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        <div id="banner">
+            <a target="banner" href="/" onclick="return false;">
+                <img class="img-responsive center-block" src="~/images/welcome.png">
+            </a>
+        </div>
+        <br />
+        <br />
+    </div>
+
+
+    <div class="container body-content">
+
+        @Html.Partial("_StatusMessages")
+
+        @RenderBody()
+        <hr />
+
+        <footer>
+            <p>&copy; 2019 - CookieFy</p>
+        </footer>
+    </div>
+
+    @RenderSection("head", required: false)
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

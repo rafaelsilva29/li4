@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{452917AA-3DFC-4825-9E23-CB2D12A4DFAD}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CookieFy/Pages/AssistentFinalPage.cshtml.cs">
+    <Files>
+      <File FileName="CookieFy/Pages/DoRecipe.cshtml" Line="119" Column="15" />
+      <File FileName="CookieFy/Pages/DoRecipe.cshtml.cs" Line="60" Column="35" />
+      <File FileName="CookieFy/Pages/AssistentFinalPage.cshtml.cs" Line="23" Column="21" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CookieFy" expanded="True">
+            <Node name="CookieFy" expanded="True">
+              <Node name="Pages" expanded="True">
+                <Node name="AssistentFinalPage.cshtml.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.CookieFy PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

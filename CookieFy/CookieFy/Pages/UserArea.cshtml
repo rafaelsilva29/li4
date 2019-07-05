@@ -1,0 +1,84 @@
+﻿@page
+@model CookieFy.Pages.UserArea
+@{
+    ViewData["Title"] = "Área do Utilizador";
+}
+
+@section head
+    {
+    <link href="~/lib/bootstrap/dist/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="~/lib/bootstrap/dist/css/theme.css" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+}
+
+@section Scripts
+    {
+    <script src="~/lib/bootstrap/dist/js/star-rating.js" type="text/javascript"></script>
+    <script src="~/lib/bootstrap/dist/js/theme.js"></script>
+}
+
+@if (User.IsInRole("User"))
+{
+    <h4>Área do Utilizador</h4>
+    <hr />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-centered">
+                <div class="panel panel-default col-centered">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-8">
+                                <h2 class="text-primary"><b><span class="glyphicon glyphicon-user"></span> @Model.user.Name</b></h2>
+                                <p><strong><span class="glyphicon glyphicon-envelope"></span> Email: </strong> @Model.user.Email</p>
+                                <p><strong><span class="glyphicon glyphicon glyphicon-briefcase"></span> Profissão: </strong> @Model.user.Profession</p>
+                                <p><strong><span class="glyphicon glyphicon glyphicon-home"></span> Pais: </strong> @Model.user.Country</p>
+                                <p><strong><span class="glyphicon glyphicon glyphicon-barcode"></span> Cidade: </strong> @Model.user.City</p>
+                                <p><strong><span class="glyphicon glyphicon glyphicon-euro"></span> Crédito: </strong> @Model.user.Balance</p>
+                                <p><strong><span class="glyphicon glyphicon glyphicon-list-alt"></span> Decrição: </strong> @Model.user.Description</p>
+                            </div><!--/col-->
+                            <div id="profileID" class="col-xs-12 col-sm-4 text-center">
+                                <br />
+                                <img src="data:image/jpeg;base64, @System.Convert.ToBase64String(Model.user.ImgPath)" alt="" class="center-block img-circle img-responsive profile-img">
+                                <br />
+                            </div><!--/col!-->
+                        </div>
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4">
+                                <a class="btn btn-info btn-block" asp-page="/AllRecipes" asp-page-handler="ListOfRecipes">Receitas</a>
+                            </div><!--/col-->
+                            <div class="col-xs-12 col-sm-4">
+                                <a class="btn btn-info btn-block" style="pointer-events:none; cursor:not-allowed;" asp-page="/UserActivity" asp-page-handler="ListRecipes">Lista de Receitas</a>
+                            </div><!--/col-->
+                            <div class="col-xs-12 col-sm-4">
+                                <a class="btn btn-info btn-block" style="pointer-events:none; cursor:not-allowed;" asp-page="/UserActivity" asp-page-handler="WeekPlan">Plano Semanal</a>
+                            </div><!--/col-->
+                        </div>
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <a class="btn btn-primary btn-block" asp-page="/EditProfile" asp-page-handler="UpdateUserAccount">Editar Perfil</a>
+                            </div><!--/col-->
+                            <div class="col-xs-12 col-sm-6">
+                                <a class="btn btn-primary btn-block" asp-page="/RegisterRecipe">Registar Receita</a>
+                            </div><!--/col-->
+                        </div>
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <a class="btn btn-primary btn-block" asp-page="/PutCredit">Carregar Créditos</a>
+                            </div><!--/col-->
+                            <div class="col-xs-12 col-sm-6">
+                                <a class="btn btn-primary btn-block" asp-page="/AddSubscriptionUser" asp-page-handler="ListOfSubscriptions">Adicionar Subscrição</a>
+                            </div><!--/col-->
+                        </div>
+                    </div><!--/row-->
+                </div><!--/panel-body-->
+            </div><!--/panel-->
+        </div>
+    </div>
+}

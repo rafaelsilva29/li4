@@ -1,0 +1,162 @@
+﻿@page
+@model CookieFy.Pages.AddSubscriptionUser
+@{
+    ViewData["Title"] = "Adicionar Subscrição";
+}
+
+@section head
+    {
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+
+}
+
+@section Scripts
+    {
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script>$('#subscriptions').DataTable({
+            paging: true,
+            "columnDefs": [{
+                "targets": 3,
+                "searchable": false,
+                "orderable": false,
+                "visible": true
+            }],
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ linhas por página",
+                "zeroRecords": "Nada encontrado.",
+                "info": "A mostrar a página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sem linhas disponíveis",
+                "infoFiltered": "(filtrado de _MAX_ linhas)",
+                "search": "Procurar: ",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Seguinte"
+                }
+            }
+        });</script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script>$('#subscriptionsListUser').DataTable({
+            paging: true,
+            "columnDefs": [{
+                "targets": 3,
+                "searchable": false,
+                "orderable": false,
+                "visible": true
+            }],
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ linhas por página",
+                "zeroRecords": "Nada encontrado.",
+                "info": "A mostrar a página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sem linhas disponíveis",
+                "infoFiltered": "(filtrado de _MAX_ linhas)",
+                "search": "Procurar: ",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Seguinte"
+                }
+            }
+        });</script>
+}
+
+
+@if (Model.SubscriptionList != null)
+{
+    <h4>Lista de Subscrições</h4>
+    <hr />
+
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table id="subscriptions" class="row-border" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="text-center"><span>SubscriptionID</span></th>
+                        <th class="text-center"><span>Name</span></th>
+                        <th class="text-center"><span>Price</span></th>
+                        <th class="text-center">Add</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.SubscriptionList)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                <span><strong> @item.SubscriptionID</strong></span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Name</span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Price</span>
+                            </td>
+                            <td class="text-center" style="width: 15%;">
+                                <form asp-page-handler="AddSubscription" asp-route-subid="@item.SubscriptionID" method="post">
+                                    <button type="submit" class="myButton">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-plus-square fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@if (Model.UserSubscriptionList != null)
+{
+    <h4>Lista das suas Subscrições</h4>
+    <hr />
+
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table id="subscriptionsListUser" class="row-border" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="text-center"><span>SubscriptionID</span></th>
+                        <th class="text-center"><span>Name</span></th>
+                        <th class="text-center"><span>Price</span></th>
+                        <th class="text-center">Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.UserSubscriptionList)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                <span><strong> @item.SubscriptionID</strong></span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Name</span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Price</span>
+                            </td>
+                            <td class="text-center" style="width: 15%;">
+                                <form asp-page-handler="AddSubscription" asp-route-subid="@item.SubscriptionID" method="post">
+                                    <button type="submit" class="myButton">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-plus-square fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </button>
+                                </form>
+                                <form asp-page-handler="CancelSubscription" asp-route-subid="@item.SubscriptionID" method="post">
+                                    <button type="submit" class="myButton">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-minus-square fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

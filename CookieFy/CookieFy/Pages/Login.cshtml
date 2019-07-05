@@ -1,0 +1,39 @@
+﻿@page
+@model CookieFy.Pages.Login
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h4>Iniciar sessão</h4>
+<hr />
+
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="well">
+            <form asp-page-handler="LoginUser" method="post">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <input type="checkbox" asp-for="RememberMe" />
+                    <label asp-for="RememberMe"></label>
+                </div>
+
+                @Html.ValidationSummary(false)
+
+                <div class="form-group">
+                    <input type="submit" value="Iniciar Sessão" class="btn btn-default pull-right" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>

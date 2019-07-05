@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="wwwroot\Data\**" />
+    <Content Remove="wwwroot\Data\**" />
+    <EmbeddedResource Remove="wwwroot\Data\**" />
+    <None Remove="wwwroot\Data\**" />
+    <Content Remove="Pages\RegisterSubscription.cshtml" />
+    <Compile Remove="Pages\GPSLocation.cshtml.cs" />
+    <Content Remove="Pages\PutCredit.cshtml" />
+    <Content Remove="Pages\AddSubscriptionUser.cshtml" />
+    <Content Remove="Pages\Assistent.cshtml" />
+    <Content Remove="Pages\AllRecipes.cshtml" />
+    <Content Remove="Pages\Recipe.cshtml" />
+    <Content Remove="Pages\RegisterRecipe.cshtml" />
+    <Content Remove="Pages\AssistentFinalPage.cshtml" />
+    <Content Remove="Pages\DoRecipe.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Pages\About.cshtml.cs" />
+    <Compile Remove="Pages\Contact.cshtml.cs" />
+    <Compile Remove="Pages\Logout.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Pages\About.cshtml" />
+    <Content Remove="Pages\Contact.cshtml" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\DatePickerReady.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Core" Version="1.4.0" />
+    <PackageReference Include="Bootstrap.Datepicker" Version="1.7.1" />
+    <PackageReference Include="Bootstrap.v3.Datetimepicker.CSS" Version="4.17.45" />
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="7.13.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pages\RegisterSubscription.cshtml" />
+    <None Include="Pages\PutCredit.cshtml" />
+    <None Include="Pages\AddSubscriptionUser.cshtml" />
+    <None Include="Pages\Assistent.cshtml" />
+    <None Include="Pages\AllRecipes.cshtml" />
+    <None Include="Pages\Recipe.cshtml" />
+    <None Include="Pages\RegisterRecipe.cshtml" />
+    <None Include="Pages\AssistentFinalPage.cshtml" />
+    <None Include="Pages\DoRecipe.cshtml" />
+  </ItemGroup>
+</Project>

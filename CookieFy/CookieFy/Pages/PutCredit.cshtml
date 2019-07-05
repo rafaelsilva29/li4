@@ -1,0 +1,56 @@
+﻿@page
+@model PutCredit
+@{
+    ViewData["Title"] = "Carregamento de Créditos";
+}
+
+@if (User.IsInRole("User"))
+{
+
+    <h4>Carregamento de Crédito</h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="well">
+
+                <form asp-page-handler="PutCredit" asp-page="PutCredit" method="post" enctype="multipart/form-data">
+
+                    @Html.AntiForgeryToken()
+
+                    <section>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.NumberCC, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.NumberCC, new { @class = "form-control", @type = "number" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.CVC, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.CVC, new { @class = "form-control", @type = "number" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Date, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.Date, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.mount, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.mount, new { @class = "form-control", @type = "number", @step = "0.01" })
+                        </div>
+
+                        @Html.ValidationSummary(false)
+
+                        <div class="form-group">
+                            <a class="btn btn-default pull-right" asp-page="/PutCredit" asp-page-handler="Cancel">Cancelar</a>
+                            <input type="submit" class="btn btn btn-info pull-right" value="Submit" />
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+

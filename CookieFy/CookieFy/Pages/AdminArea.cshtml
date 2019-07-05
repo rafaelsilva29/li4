@@ -1,0 +1,44 @@
+﻿@page
+@model CookieFy.Pages.AdminArea
+@{
+    ViewData["Title"] = "Área do Administrador";
+
+}
+
+@section Scripts
+    {
+
+}
+
+<h4>Área do Administrador</h4>
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-centered">
+            <div class="panel panel-default col-centered">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4">
+                            <a class="btn btn-info btn-block" asp-page="/AdminOverview" asp-page-handler="ListOfRecipes">Lista de Receitas</a>
+                        </div><!--/col-->
+                        <div class="col-xs-12 col-sm-4">
+                            <a class="btn btn-info btn-block" asp-page="/AdminOverview" asp-page-handler="ListOfUsers">Lista de Utilizadores</a>
+                        </div><!--/col-->
+                        <div class="col-xs-12 col-sm-4">
+                            <a class="btn btn-info btn-block" asp-page="/AdminOverview" asp-page-handler="ListOfSubscriptions">Lista de Subscrições</a>
+                        </div><!--/col-->
+                    </div><!--/row-->
+                    <div class="row">
+                        <br />
+                        <div class="col-xs-12 col-sm-12">
+                            <a class="btn btn-primary btn-block" asp-page="/RegisterSubscription">Registar Subscrição</a>
+                        </div><!--/col-->
+                        <br />
+                        <br />
+                    </div><!--/panel-body-->
+                </div><!--/panel-->
+            </div>
+        </div>
+    </div>
+</div>

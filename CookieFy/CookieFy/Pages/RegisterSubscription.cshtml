@@ -1,0 +1,39 @@
+﻿@page
+@model RegisterSubscription
+@{
+    ViewData["Title"] = "Registo de Subscrição";
+}
+
+<h4>Criar subscrição</h4>
+<hr />
+
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="well">
+
+            <form asp-page-handler="CreateSubscription" asp-page="RegisterSubscription" method="post" enctype="multipart/form-data">
+
+                @Html.AntiForgeryToken()
+
+                <section>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Subscription.Name, new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Subscription.Name, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Subscription.Price, new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Subscription.Price, new { @class = "form-control", @type = "number", @step = "0.01" })
+                    </div>
+   
+                    @Html.ValidationSummary(false)
+
+                    <div class="form-group">
+                        <input type="submit" value="Registar" class="btn btn-default pull-right" />
+                    </div>
+                </section>
+            </form>
+        </div>
+    </div>
+</div>

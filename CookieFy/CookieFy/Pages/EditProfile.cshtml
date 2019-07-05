@@ -1,0 +1,63 @@
+﻿@page
+@model EditProfile
+@{
+    ViewData["Title"] = "Editar Perfil";
+}
+
+@if (User.IsInRole("User"))
+{
+
+    <h4>Editar perfil</h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="well">
+
+                <form asp-page-handler="UpdateUserAccount" asp-page="EditProfile" method="post" enctype="multipart/form-data">
+
+                    @Html.AntiForgeryToken()
+
+                    <section>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.NameModel, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.NameModel, new { @class = "form-control", @Value = Model.NameModel })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ProfessionModel, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.ProfessionModel, new { @class = "form-control", @Value = Model.ProfessionModel })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.CountryModel, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.CountryModel, new { @class = "form-control", @Value = Model.CountryModel })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.CityModel, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.CityModel, new { @class = "form-control", @Value = Model.CityModel })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.DescriptionModel, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.DescriptionModel, new { @class = "form-control", @Value = Model.DescriptionModel })
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="AvatarModel"></label>
+                            <input type="file" asp-for="AvatarModel" />
+                        </div>
+
+                        @Html.ValidationSummary(false)
+
+                        <div class="form-group">
+                            <input type="submit" value="Editar" class="btn btn-default pull-right" />
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+}

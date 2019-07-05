@@ -1,0 +1,38 @@
+﻿@page "{handler?}/{recipeID?}"
+@model CookieFy.Pages.AssistentModel
+@{
+    ViewData["Title"] = "Assistente";
+}
+
+@section head
+    {
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+}
+
+@section Scripts
+    {
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+}
+
+<h1>@Model.Recipe.Title</h1>
+
+<p>Certifique-se que tem todos os utensílios:</p>
+<ol>
+    @foreach (var item in Model.Recipe.RecipeUtensils)
+    {
+        <li>@item.Utensil.Name</li>
+    }
+</ol>
+
+<p>Certifique-se que tem todos os ingredientes:</p>
+<ol>
+    @foreach (var item in Model.Recipe.RecipeIngredients)
+    {
+        <li>@item.Ingredient.Name</li>
+    }
+</ol>
+
+<a class="btn btn-primary btn-block" asp-page="/DoRecipe" asp-page-handler="Ready" asp-route-recipeID ="@Model.Recipe.RecipeID">Começar Confeção</a>

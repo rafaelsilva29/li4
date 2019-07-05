@@ -1,0 +1,280 @@
+﻿@page
+@model CookieFy.Pages.AdminOverview
+@{
+    ViewData["Title"] = "Visão Geral";
+}
+
+@section head
+    {
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+
+}
+
+@section Scripts
+    {
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script>$('#users').DataTable({
+            paging: true,
+            "columnDefs": [{
+                "targets": 8,
+                "searchable": false,
+                "orderable": false,
+                "visible": true
+            }],
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ linhas por página",
+                "zeroRecords": "Nada encontrado.",
+                "info": "A mostrar a página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sem linhas disponíveis",
+                "infoFiltered": "(filtrado de _MAX_ linhas)",
+                "search": "Procurar: ",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Seguinte"
+                }
+            }
+        });</script>
+
+    <script>$('#recipes').DataTable({
+            paging: true,
+            "columnDefs": [{
+                "targets": 9,
+                "searchable": false,
+                "orderable": false,
+                "visible": true
+            }],
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ linhas por página",
+                "zeroRecords": "Nada encontrado.",
+                "info": "A mostrar a página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sem linhas disponíveis",
+                "infoFiltered": "(filtrado de _MAX_ linhas)",
+                "search": "Procurar: ",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Seguinte"
+                }
+            }
+        });</script>
+    <script>$('#subscriptions').DataTable({
+            paging: true,
+            "columnDefs": [{
+                "targets": 3,
+                "searchable": false,
+                "orderable": false,
+                "visible": true
+            }],
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ linhas por página",
+                "zeroRecords": "Nada encontrado.",
+                "info": "A mostrar a página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sem linhas disponíveis",
+                "infoFiltered": "(filtrado de _MAX_ linhas)",
+                "search": "Procurar: ",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Seguinte"
+                }
+            }
+        });</script>
+}
+
+@if (Model.UsersList != null)
+{
+
+    <h4>Lista de Utilizadores</h4>
+    <hr />
+
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table id="users" class="row-border" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="text-center"><span></span></th>
+                        <th class="text-center"><span>UserID</span></th>
+                        <th class="text-center"><span>Nome</span></th>
+                        <th class="text-center"><span>Email</span></th>
+                        <th class="text-center"><span>Profissão</span></th>
+                        <th class="text-center"><span>Pais</span></th>
+                        <th class="text-center"><span>Cidade</span></th>
+                        <th class="text-center"><span>Crédito</span></th>
+                        <th class="text-center"><span>Descrição</span></th>
+                        <th class="text-center">Remover</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.UsersList)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                <img src="data:image/jpeg;base64,@System.Convert.ToBase64String(item.ImgPath)" width="50" height="50" alt="" />
+                            </td>
+                            <td class="text-center">
+                                <span><strong> @item.UserID</strong></span>
+                            </td>
+                            <td class="text-center">@item.Name</td>
+                            <td class="text-center">
+                                <span>@item.Email</span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Profession</span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Country</span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.City</span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Balance</span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Description</span>
+                            </td>
+                            <td class="text-center" style="width: 15%;">
+                                <form asp-page-handler="DeleteUser" asp-route-userid="@item.UserID" method="post" style="display: inline;">
+                                    <button type="submit" class="myButton">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-minus-square fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@if (Model.RecipesList != null)
+{
+
+    <h4>Lista de Receitas</h4>
+    <hr />
+
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table id="recipes" class="row-border" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="text-center"><span>RecipeID</span></th>
+                        <th class="text-center"><span>Titulo</span></th>
+                        <th class="text-center"><span>Descrição</span></th>
+                        <th class="text-center"><span>Rank</span></th>
+                        <th class="text-center"><span>Classificação</span></th>
+                        <th class="text-center"><span>Tempo</span></th>
+                        <th class="text-center"><span>Price</span></th>
+                        <th class="text-center"><span>Type</span></th>
+                        <th class="text-center"><span>Data de Registo</span></th>
+                        <th class="text-center">Remover</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.RecipesList)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                <span><strong> @item.RecipeID</strong></span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Title</span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Description</span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Rank</span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Classifications</span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Time</span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Price</span>
+                            </td>
+                            <td class="text-center">
+                                <span>
+                                    @if (item.Price == 0.0)
+                                    {
+                                        <span>Premium</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Free</span>
+                                    }
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <span>
+                                    @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Date))
+                                </span>
+                            </td>
+                            <td class="text-center" style="width: 15%;">
+                                <form asp-page-handler="DeleteRecipe" asp-route-recipeid="@item.RecipeID" method="post">
+                                    <button type="submit" class="myButton">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-minus-square fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@if (Model.SubscriptionList != null)
+{
+    <h4>Lista de Subscrições</h4>
+    <hr />
+
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table id="subscriptions" class="row-border" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="text-center"><span>SubscriptionID</span></th>
+                        <th class="text-center"><span>Name</span></th>
+                        <th class="text-center"><span>Price</span></th>
+                        <th class="text-center">Remover</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.SubscriptionList)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                <span><strong> @item.SubscriptionID</strong></span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Name</span>
+                            </td>
+                            <td class="text-center">
+                                <span>@item.Price</span>
+                            </td>
+                            <td class="text-center" style="width: 15%;">
+                                <form asp-page-handler="DeleteSubscription" asp-route-subid="@item.SubscriptionID" method="post">
+                                    <button type="submit" class="myButton">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-minus-square fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

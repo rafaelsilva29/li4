@@ -1,0 +1,191 @@
+﻿@page
+@model RegisterRecipe
+@{
+    ViewData["Title"] = "Criar Receita";
+}
+@section Scripts
+    {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var max_fields = 20;
+            var wrapper = $(".container1");
+            var add_button = $(".add_form_tags");
+
+            var x = 0;
+            $(add_button).click(function (e) {
+                e.preventDefault();
+                if (x < max_fields) {
+                    x++;
+                    $(wrapper).append('<div class="form-group"><input class="form-control" data-val="true" data-val-required="The Name field is required." id="Tags_' + x + '__Name" name="Tags[' + x + '].Name" value="" type="text"><span class="text-danger field-validation-valid" data-valmsg-for="Tags[' + x + '].Name" data-valmsg-replace="true"></span><a href="#" class="delete">Delete</a></div>'); //add input bo
+
+                }
+                else {
+                    alert('You Reached the limits')
+                }
+            });
+
+            $(wrapper).on("click", ".delete", function (e) {
+                e.preventDefault(); $(this).parent('div').remove(); x--;
+            })
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var max_fields = 20;
+            var wrapper = $(".container2");
+            var add_button = $(".add_form_ings");
+
+            var x = 0;
+            $(add_button).click(function (e) {
+                e.preventDefault();
+                if (x < max_fields) {
+                    x++;
+                    $(wrapper).append('<div class="form-group"><input class="form-control" data-val="true" data-val-required="The Name field is required." id="Ingredientes_' + x + '__Name" name="Ingredientes[' + x + '].Name" value="" type="text"><span class="text-danger field-validation-valid" data-valmsg-for="Ingredientes[' + x + '].Name" data-valmsg-replace="true"></span><a href="#" class="delete">Delete</a></div>'); //add input bo
+                }
+                else {
+                    alert('You Reached the limits')
+                }
+            });
+
+            $(wrapper).on("click", ".delete", function (e) {
+                e.preventDefault(); $(this).parent('div').remove(); x--;
+            })
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var max_fields = 20;
+            var wrapper = $(".container3");
+            var add_button = $(".add_form_utens");
+
+            var x = 0;
+            $(add_button).click(function (e) {
+                e.preventDefault();
+                if (x < max_fields) {
+                    x++;
+                    $(wrapper).append('<div class="form-group"><input class="form-control" data-val="true" data-val-required="The Name field is required." id="Utensils_' + x + '__Name" name="Utensils[' + x + '].Name" value="" type="text"><span class="text-danger field-validation-valid" data-valmsg-for="Utensils[' + x + '].Name" data-valmsg-replace="true"></span><a href="#" class="delete">Delete</a></div>'); //add input bo
+                }
+                else {
+                    alert('You Reached the limits')
+                }
+            });
+
+            $(wrapper).on("click", ".delete", function (e) {
+                e.preventDefault(); $(this).parent('div').remove(); x--;
+            })
+        });
+    </script>
+}
+
+<h4>Registar Receita</h4>
+<hr />
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="well">
+            <form asp-page-handler="CreateRecipe" asp-page="RegisterRecipe" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <section>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Recipe.Title, new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Recipe.Title, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Recipe.Description, new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Recipe.Description, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Recipe.Price, new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Recipe.Price, new { @class = "form-control", @type = "number", @step = "0.01" })
+                    </div>
+
+                    <div class="container2">
+                        <div class="form-group">
+                            <label asp-for="Ingredientes" class="control-label"></label>
+                            <input asp-for="Ingredientes[0].Name" class="form-control" />
+                            <span asp-validation-for="Ingredientes[0].Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <button class="btn btn-info add_form_ings"><span style="font-size:16px; font-weight:bold;">+ </span></button>
+                    <div style="height:20px;"></div>
+                    <div class="container3">
+                        <div class="form-group">
+                            <label asp-for="Utensils" class="control-label"></label>
+                            <input asp-for="Utensils[0].Name" class="form-control" />
+                            <span asp-validation-for="Utensils[0].Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <button class="btn btn-info add_form_utens"><span style="font-size:16px; font-weight:bold;">+ </span></button>
+                    <div style="height:20px;"></div>
+
+                    <div class="container1">
+                        <div class="form-group">
+                            <label asp-for="Tags" class="control-label"></label>
+                            <input asp-for="Tags[0].Name" class="form-control" />
+                            <span asp-validation-for="Tags[0].Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <button class="btn btn-info add_form_tags"><span style="font-size:16px; font-weight:bold;">+ </span></button>
+                    <div style="height:20px;"></div>
+
+                    <div class="form-group">
+                        <label asp-for="ImgRecipe"></label>
+                        <input type="file" asp-for="ImgRecipe" />
+                    </div>
+                    @Html.ValidationSummary(false)
+
+                    <div class="form-group">
+                        <input type="submit" value="Próximo Passo" class="btn btn-default pull-right" />
+                    </div>
+                </section>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .container1 input[type=text] {
+        padding: 5px 0px;
+        margin: 5px 5px 5px 0px;
+    }
+
+    .add_form_field {
+        background-color: #1c97f3;
+        border: none;
+        color: white;
+        padding: 8px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 0;
+        cursor: pointer;
+        border: 1px solid #186dad;
+    }
+
+    .myinput-text {
+        border: 1px solid darkgray;
+        width: 80%;
+        height: 40px;
+        margin-bottom: 14px;
+        color: black;
+        font-size: 15px;
+    }
+
+    .delete {
+        background-color: #fd1200;
+        border: none;
+        color: white;
+        padding: 5px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+</style>
+

@@ -1,0 +1,32 @@
+﻿@{
+    var type = (string)TempData["_alert.type"];
+    var title = (string)TempData["_alert.title"];
+    var body = (string)TempData["_alert.body"];
+    var DurationAlert = (string)TempData["_alert.DurationAlert"];
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var alert = $('div.alert[auto-close]');
+        alert.each(function () {
+            var that = $(this);
+            var time_period = that.attr('auto-close');
+            setTimeout(function () {
+                that.alert('close');
+            }, time_period);
+        });
+    });
+</script>
+
+
+
+<div class="alert-container">
+    @if (!string.IsNullOrEmpty(type)) {
+        <div class="alert alert-@type alert-dismissible" auto-close="@DurationAlert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>@title</strong> @body
+        </div>
+    }
+</div>

@@ -1,0 +1,197 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+    background: url("../../../../images/table.jpg") !important;
+    background-size: cover !important;
+    height: 100% !important;
+    background-repeat: no-repeat !important;
+    background-color: rgba(83, 101, 111, 1) !important;
+    color: white !important;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: white !important;
+}
+
+#banner {
+    width: 70%;
+    height: 70%;
+    margin: auto;
+    padding-top: 35px;
+    padding-bottom: 15px;
+    text-align: center; /*centers horizontally*/
+    pointer-events: none;
+}
+
+.navbar-inverse {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+@media (max-width: 767px) {
+    .navbar-nav > li > a {
+        line-height: 30px; /*changing this particular line does a lot, this is where the increase and decrease are done */
+        padding-top: 5px;
+        padding-bottom: 0px;
+        text-align: right;
+    }
+}
+
+.navbar-header {
+    background-color: transparent !important;
+}
+
+.navbar-inverse, .navbar-collapse, .navbar-inverse, .navbar-form {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none;
+}
+
+#color {
+    background-color: transparent !important;
+}
+
+#myNavbar {
+    border: none !important;
+    background-color: rgba(83, 101, 111, 0.6) !important;
+}
+
+
+.navbar-toggle {
+    background-color: red !important;
+}
+
+container body-content .navbar-collapse {
+    background-color: transparent !important;
+}
+
+.jumbotron {
+    background-color: transparent !important;
+}
+
+.jumbotron h1, .jumbotron .h1 {
+        color: white;
+}
+
+.container.body-content {
+    background-color: rgba(83, 101, 111, 0.6) !important;
+    font-size: 15px !important;
+}
+
+.well {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.datepicker {
+    background-color: white;
+    color: #333;
+}
+
+.datepicker.dropdown-menu table {
+    background-color: transparent;
+    color: black;
+}
+
+.datepicker table tr td.active, .datepicker table tr td.active:hover {
+    background-color: red;
+    text-shadow: none;
+}
+
+.bootstrap-datetimepicker-widget table td.active.today:before {
+    border-bottom-color: #fff;
+}
+
+.timepicker {
+    background-color: #fff;
+    color: #333;
+}
+
+.glyphicon-lg {
+    font-size: 4em;
+}
+
+.info-block {
+    margin-bottom: 25px;
+}
+
+.info-block .square-box {
+    width: 100px;
+    min-height: 110px;
+    margin-right: 22px;
+    text-align: center !important;
+    background-color: #676767;
+    padding: 20px 0;
+}
+
+.info-block.block-info {
+    border-color: #20819e;
+}
+
+.info-block.block-info .square-box {
+    background-color: #20819e;
+    color: #FFF
+}
+
+.btn-space {
+    margin-right: 5px;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.profile-img {
+    box-shadow: 0 5px 15px rgba(0,0,0,.5)
+}
+
+.panel-body {
+    color: white;
+}
+
+.panel {
+    background-color: transparent;
+}
+
+.panel-default {
+    border: none !important;
+}
+
+#profileID {
+    min-height: 20vh;
+}
+
+
+/* texto da tabela */
+th {
+    color: white;
+}
+
+
+/* cenas da tabela */
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+    color: white !important;
+}
+
+/* linha no fundo da tabela */
+table.dataTable.no-footer {
+    border-bottom: none !important;
+}
+
+/* fundo da tabela */
+tbody tr {
+    background-color: transparent !important;
+}
+
+/* linha da tabela entre headers e body*/
+thead th {
+    border-bottom: none !important;
+}
+
+/* botao para as tabelas */
+.myButton {
+    background-color: transparent;
+    border: none;
+}
